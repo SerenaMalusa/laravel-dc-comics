@@ -2,14 +2,23 @@
 <html lang="en">
 
   <head>
+    <!-- carachters and viewport tags -->
     <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="ie=edge" http-equiv="X-UA-Compatible">
-    <title>{{ env('APP_NAME', 'Laravel project') }} - @yield('title', 'My page') </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- SEO tags -->
+    <meta name="author" content="Serena Malusà" />
+    <meta name="description" content="laravel exercise">
+
+    <!-- title and icon -->
+    <title>{{ env('APP_NAME')}} - @yield('title')</title>
+    
+    <!-- css -->
+    {{-- Bootstrap --}}
     @vite('resources/js/app.js')
-
+    {{-- page specific css --}}
     @yield('css')
+
   </head>
 
   <body>
