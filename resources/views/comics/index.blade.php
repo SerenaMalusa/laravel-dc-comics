@@ -5,7 +5,12 @@
 @section('main-content')
   <section>
     <div class="container py-4">
-      <h1 class="mb-5">Comic's list</h1>
+      <div class="row justify-content-between align-items-center">
+        <h1 class="mb-3 col-6">Comic's list</h1>
+        <div class="col-2 text-end">
+            <a class="btn btn-primary" href="{{ route('comics.create')}}">Create a new comic</a>
+        </div>
+    </div>
 
       <table class="table">
         <thead>

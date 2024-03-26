@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comic;
+use Doctrine\DBAL\Schema\View;
 use Illuminate\Http\Request;
 
 class ComicController extends Controller
@@ -25,7 +26,7 @@ class ComicController extends Controller
      */
     public function create()
     {
-        //
+        return view('comics.create');
     }
 
     /**
