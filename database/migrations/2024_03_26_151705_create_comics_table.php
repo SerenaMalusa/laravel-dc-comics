@@ -18,10 +18,12 @@ return new class extends Migration
             $table->string('title', 50);
             $table->text('description');
             $table->text('thumb')->nullable();
-            $table->tinyInteger('price')->unsigned();
-            $table->tinyText('price_unit');
+            // $table->tinyInteger('price')->unsigned();
+            // $table->tinyText('price_unit');
+            $table->tinyText('price');
             $table->tinyText('series');
             $table->date('sale_date');
+            $table->tinyText('type');
             $table->timestamps();
         });
     }
