@@ -7,7 +7,7 @@
     <div class="container py-4">
       <h1 class="mb-5">{{ $title }}</h1>
 
-      <form action="#" method="POST">
+      <form action="{{ route('comics.store') }}" method="POST">
         @csrf
     
         <div class="row flex-wrap mb-2">
@@ -50,7 +50,7 @@
             rows="4"
         ></textarea>
     
-        <button type="submit" class="btn btn-primary">Salva</button>
+        <button type="submit" class="btn btn-primary">save</button>
     </form>
 
     </div>
