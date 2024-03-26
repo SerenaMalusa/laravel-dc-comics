@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
-@section('title', "Comics'list")
+@section('title', $title = "Comics' list")
 
 @section('main-content')
   <section>
     <div class="container py-4">
       <div class="row justify-content-between align-items-center">
-        <h1 class="mb-3 col-6">Comic's list</h1>
+        <h1 class="mb-3 col-6">{{ $title }}</h1>
         <div class="col-2 text-end">
             <a class="btn btn-primary" href="{{ route('comics.create')}}">Create a new comic</a>
         </div>
     </div>
 
-      <table class="table">
+      <table class="table table-striped">
         <thead>
           <tr>
             <th scope="col">ID</th>
@@ -42,7 +42,7 @@
         </tbody>
       </table>
       
-      {{ $comics->links('pagination::bootstrap-5') }}
+      {{ $comics->links() }}
     </div>
   </section>
 @endsection

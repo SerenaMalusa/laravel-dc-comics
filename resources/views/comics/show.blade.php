@@ -8,7 +8,7 @@
             <div class="row justify-content-between align-items-center">
                 <h1 class="mb-3 col-6">{{ $comic->title }}</h1>
                 <div class="col-2 text-end">
-                    <a class="btn btn-primary" href="{{ route('comics.index')}}">Back to comics'list</a>
+                    <a class="btn btn-primary" href="{{ route('comics.index')}}">Back to comics' list</a>
                 </div>
             </div>
 
