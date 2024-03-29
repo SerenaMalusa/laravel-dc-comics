@@ -32,6 +32,9 @@
                         <div class="col-6">
                             <p><b>Price: </b>{{ $comic->price }}</p>
                         </div>
+                        <div class="col-6">
+                            <a class="btn btn-primary" href="{{ route('comics.edit', $comic) }}">Modify this comic</a>
+                        </div>
                     </div>
                 </div>
             </div>
