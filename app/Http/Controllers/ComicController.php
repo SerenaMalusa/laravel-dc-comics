@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comic;
 use Doctrine\DBAL\Schema\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ComicController extends Controller
 {
@@ -37,7 +38,7 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $this->validation($request->all());
         $comic = new Comic;
         $comic->fill($data);
         $comic->save();
@@ -76,7 +77,7 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
-        $data = $request->all();
+        $data = $this->validation($request->all());
         $comic->update($data);
 
         return redirect()->route('comics.show', $comic);
@@ -92,5 +93,49 @@ class ComicController extends Controller
     {
         $comic->delete();
         return redirect()->route('comics.index');
+    }
+
+    public function validation($data)
+    {
+        $validator = Validator::make(
+            $data,
+            [
+                'title' => 'required|string|max:50',
+                'description' => 'required',
+                'thumb' => 'nullable|string',
+                'price' => "required|between:1,100",
+                'price_unit' => 'required|in:$,€',
+                'series' => 'required|string',
+                'sale_date' => 'required|date',
+                'type' => 'required|in:comic book,graphic novel'
+            ],
+            [
+                'title.required' => 'the title is mandatory',
+                'title.string' => 'the title must be a string',
+                'title.max' => 'the character limit for the title is 50',
+
+                'description.required' => 'the description is mandatory',
+
+                'thumb.string' => 'the title must be a string',
+
+                'price.required' => 'the price is mandatory',
+                'price.between' => 'the price must be between 1 end 100',
+
+                'price_unit.required' => 'the price_unit is mandatory',
+                'price_unit.in' => 'the price_unit must be $ or €',
+
+                'series.required' => 'the price_unit is mandatory',
+                'series.string' => 'the price_unit must be a string',
+
+                'sale_date.required' => 'the sale_date is mandatory',
+                'sale_date.date' => 'the sale_date must be a date',
+
+                'type.required' => 'the type is mandatory',
+                'type.in' => "the type must be 'comic book' or 'graphic novel'"
+
+            ]
+        )->validate();
+
+        return $validator;
     }
 }
