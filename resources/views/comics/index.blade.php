@@ -41,7 +41,7 @@
                         <form class="d-inline-block" action="{{ route('comics.destroy', $comic) }}" method="POST">
                           @csrf
                           @method('DELETE')
-                          <button class="btn border border-0" type="submit" id='delete-btn'>
+                          <button class="btn border border-0" type="submit" id='delete-button'>
                             <i class="fa-solid fa-trash-can text-danger"></i>
                           </button>
                         </form>
@@ -60,7 +60,7 @@
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-      #delete-btn {
+      #delete-button {
         padding: 0;
         margin: 0;
         display: flex;
@@ -71,12 +71,16 @@
 
 @section('js')
     <script>
-        const deleteBtn = document.querySelector('#delete-btn');
-        deleteBtn.addEventListener('click', function () {
-            confirm(
+        const deleteButton = document.querySelector('#delete-button');
+        deleteButton.addEventListener('click', function () {
+        // console.log('bottone cliccato');
+
+          if (!confirm(
 `The delete action is not reversible.
 Are you sure that you want to remove this comic from the list?`
-            );
+            )) {
+                event.preventDefault();
+            } 
         });
     </script>
 @endsection

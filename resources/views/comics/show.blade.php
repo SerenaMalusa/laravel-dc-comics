@@ -63,12 +63,10 @@
         const deleteBtn = document.querySelector('#delete-btn');
         deleteBtn.addEventListener('click', function () {
 
-            let confirmation = confirm(
+            if (!confirm(
 `The delete action is not reversible.
 Are you sure that you want to remove this comic from the list?`
-            );
-
-            if (!confirmation) {
+            )) {
                 event.preventDefault();
             } 
         });
