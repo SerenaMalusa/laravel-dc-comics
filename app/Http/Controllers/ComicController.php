@@ -103,7 +103,7 @@ class ComicController extends Controller
                 'title' => 'required|string|max:50',
                 'description' => 'required',
                 'thumb' => 'nullable|string',
-                'price' => "required|between:1,100",
+                'price' => "required|numeric|between:1,100",
                 'price_unit' => 'required|in:$,€',
                 'series' => 'required|string',
                 'sale_date' => 'required|date',
@@ -119,13 +119,14 @@ class ComicController extends Controller
                 'thumb.string' => 'the title must be a string',
 
                 'price.required' => 'the price is mandatory',
-                'price.between' => 'the price must be between 1 end 100',
+                'price.numeric' => 'the price must be a number',
+                'price.between' => 'the price must be between 1 and 100',
 
-                'price_unit.required' => 'the price_unit is mandatory',
-                'price_unit.in' => 'the price_unit must be $ or €',
+                'price_unit.required' => 'the price unit is mandatory',
+                'price_unit.in' => 'the price unit must be $ or €',
 
-                'series.required' => 'the price_unit is mandatory',
-                'series.string' => 'the price_unit must be a string',
+                'series.required' => 'the serie is mandatory',
+                'series.string' => 'the serie must be a string',
 
                 'sale_date.required' => 'the sale_date is mandatory',
                 'sale_date.date' => 'the sale_date must be a date',
