@@ -37,7 +37,7 @@
                             <form class="d-inline" action="{{ route('comics.destroy', $comic) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger"> Delete this comic</button>
+                                <button type="submit" class="btn btn-danger" id='delete-btn'> Delete this comic</button>
                             </form>
                         </div>
                         <div class="col-12">
@@ -56,4 +56,16 @@
             width: 100%;
         }
     </style>
+@endsection
+
+@section('js')
+    <script>
+        const deleteBtn = document.querySelector('#delete-btn');
+        deleteBtn.addEventListener('click', function () {
+            confirm(
+`The delete action is not reversible.
+Are you sure that you want to remove this comic from the list?`
+            );
+        });
+    </script>
 @endsection
