@@ -35,6 +35,8 @@
                         <a href="{{ route('comics.show', $comic) }}">
                             <i class="fa-solid fa-circle-info"></i>
                         </a>
+                        <a href="{{ route('comics.edit', $comic)}}">
+                          <i class="fa-solid fa-file-pen"></i></a>
                     </td>
                 </tr>
             @endforeach

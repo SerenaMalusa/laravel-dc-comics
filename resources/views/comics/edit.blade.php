@@ -7,7 +7,7 @@
     <div class="container py-4">
       <h1 class="mb-5">{{ $title }}</h1>
 
-      <form action="#" method="POST">
+      <form action="{{ route('comics.update', $comic )}}" method="POST">
         @csrf
         @method('PATCH')
     
@@ -26,8 +26,8 @@
                 <label for="type" class="form-label">Type</label>
                 {{-- <input type="text" class="form-control" id="type" name="type" /> --}}
                 <select class="form-select" id="type" name="type">
-                    <option @if ( old('type') == 'comic book') selected @endif value="comic book">comic book</option>
-                    <option @if ( old('type') == 'graphic novel') selected @endif value="graphic novel">graphic novel</option>
+                    <option @if ( $comic->type == 'comic book') selected @endif value="comic book">comic book</option>
+                    <option @if ( $comic->type == 'graphic novel') selected @endif value="graphic novel">graphic novel</option>
                   </select>
             </div>
 
