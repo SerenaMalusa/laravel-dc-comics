@@ -30,7 +30,7 @@
                     <td>{{ $comic->title }}</th>
                     <td>{{ $comic->series }}</td>
                     <td>{{ $comic->type }}</td>
-                    <td>{{ $comic->price }}</td>
+                    <td>{{ $comic->get_full_price() }}</td>
                     <td class="text-center">
                         <a href="{{ route('comics.show', $comic) }}">
                             <i class="fa-solid fa-circle-info"></i>

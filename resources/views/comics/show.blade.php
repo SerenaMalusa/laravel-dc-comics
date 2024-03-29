@@ -30,7 +30,7 @@
                             <p><b>Sale date: </b>{{ $comic->sale_date }}</p>
                         </div>
                         <div class="col-6">
-                            <p><b>Price: </b>{{ $comic->price }}</p>
+                            <p><b>Price: </b>{{ $comic->get_full_price() }}</p>
                         </div>
                         <div class="col-12">
                             <a class="btn btn-primary ms-2" href="{{ route('comics.edit', $comic) }}">Modify this comic</a>

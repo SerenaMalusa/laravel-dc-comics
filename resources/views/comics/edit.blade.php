@@ -36,9 +36,17 @@
                 <input type="text" class="form-control" id="series" name="series" value="{{ $comic->series }}"/>
             </div>
 
-            <div class="col">
-                <label for="price" class="form-label">Price</label>
-                <input type="text" class="form-control" id="price" name="price" value="{{ $comic->price }}"/>
+            <div class="col row">
+                <div class="col-8">
+                    <label for="price" class="form-label">Price</label>
+                    <input type="number" class="form-control" id="price" name="price" min='0' max="100" step=".01" value="{{ $comic->price }}"/>
+                </div>
+                <div class="col-4 d-flex align-items-end">
+                    <select class="form-select" name="price_unit" id="price_unit">
+                        <option @if ( $comic->price_unit == '$') selected @endif value="$">$</option>
+                        <option @if ( $comic->price_unit == '€') selected @endif value="€">€</option>
+                    </select>
+                </div>
             </div>
             
             <div class="col">

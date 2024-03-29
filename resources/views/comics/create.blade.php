@@ -11,12 +11,12 @@
         @csrf
     
         <div class="row flex-wrap mb-2">
-            <div class="col-6">
+            <div class="col-6 mb-2">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control" id="title" name="title" />
             </div>
 
-            <div class="col-6">
+            <div class="col-6 mb-2">
                 <label for="thumb" class="form-label">Image</label>
                 <input type="text" class="form-control" id="thumb" name="thumb" />
             </div>
@@ -36,9 +36,17 @@
                 <input type="text" class="form-control" id="series" name="series" />
             </div>
 
-            <div class="col">
-                <label for="price" class="form-label">Price</label>
-                <input type="text" class="form-control" id="price" name="price" />
+            <div class="col row">
+                <div class="col-8">
+                    <label for="price" class="form-label">Price</label>
+                    <input type="number" class="form-control" id="price" name="price" min='0' max="100" step=".01"/>
+                </div>
+                <div class="col-4 d-flex align-items-end">
+                    <select class="form-select" name="price_unit" id="price_unit">
+                        <option value="$">$</option>
+                        <option value="€">€</option>
+                    </select>
+                </div>
             </div>
             
             <div class="col">
