@@ -32,8 +32,16 @@
                         <div class="col-6">
                             <p><b>Price: </b>{{ $comic->price }}</p>
                         </div>
-                        <div class="col-6">
-                            <a class="btn btn-primary" href="{{ route('comics.edit', $comic) }}">Modify this comic</a>
+                        <div class="col-12">
+                            <a class="btn btn-primary ms-2" href="{{ route('comics.edit', $comic) }}">Modify this comic</a>
+                            <form class="d-inline" action="{{ route('comics.destroy', $comic) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger"> Delete this comic</button>
+                            </form>
+                        </div>
+                        <div class="col-12">
+                            
                         </div>
                     </div>
                 </div>

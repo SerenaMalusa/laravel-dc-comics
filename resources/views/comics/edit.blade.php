@@ -52,7 +52,7 @@
             class="form-control mb-3"
             id="description"
             name="description"
-            rows="4"
+            rows="8"
         >{{ $comic->description }}</textarea>
     
         <button type="submit" class="btn btn-primary">save</button>
