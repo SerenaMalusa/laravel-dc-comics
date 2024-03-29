@@ -23,7 +23,12 @@
 
             <div class="col">
                 <label for="type" class="form-label">Type</label>
-                <input type="text" class="form-control" id="type" name="type" />
+                {{-- <input type="text" class="form-control" id="type" name="type" /> --}}
+                <select class="form-select" id="type" name="type">
+                    <option selected></option>
+                    <option value="comic book">comic book</option>
+                    <option value="graphic novel">graphic novel</option>
+                  </select>
             </div>
 
             <div class="col">

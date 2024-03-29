@@ -23,7 +23,8 @@ return new class extends Migration
             $table->tinyText('price');
             $table->tinyText('series');
             $table->date('sale_date');
-            $table->tinyText('type');
+            // $table->tinyText('type');
+            $table->enum('type', ['comic book', 'graphic novel']);
             $table->timestamps();
         });
     }
