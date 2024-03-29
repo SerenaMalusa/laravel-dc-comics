@@ -72,15 +72,19 @@
 @section('js')
     <script>
         const deleteButton = document.querySelector('#delete-button');
-        deleteButton.addEventListener('click', function () {
-        // console.log('bottone cliccato');
+        if(deleteButton) {
 
-          if (!confirm(
+          deleteButton.addEventListener('click', function () {
+          // console.log('bottone cliccato');
+  
+            if (!confirm(
 `The delete action is not reversible.
 Are you sure that you want to remove this comic from the list?`
-            )) {
-                event.preventDefault();
-            } 
-        });
+              )) {
+                  event.preventDefault();
+              } 
+          });
+
+        };
     </script>
 @endsection
