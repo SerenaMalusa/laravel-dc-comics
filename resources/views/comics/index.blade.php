@@ -41,7 +41,7 @@
                         <form class="d-inline-block" action="{{ route('comics.destroy', $comic) }}" method="POST">
                           @csrf
                           @method('DELETE')
-                          <button class="btn border border-0" type="submit" id='delete-button'>
+                          <button class="border border-0 delete-button" type="submit" data-index="{{ 'i' . $comic->id }}">
                             <i class="fa-solid fa-trash-can text-danger"></i>
                           </button>
                         </form>
@@ -60,9 +60,10 @@
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-      #delete-button {
+      button.delete-button {
         padding: 0;
         margin: 0;
+        background: none;
         display: flex;
         align-items: flex-start;
       }
@@ -71,18 +72,24 @@
 
 @section('js')
     <script>
-        const deleteButton = document.querySelector('#delete-button');
-        if(deleteButton) {
+        const deleteButtons = document.querySelectorAll('.delete-button');
+        let activeIndex = 0;
 
-          deleteButton.addEventListener('click', function () {
-          // console.log('bottone cliccato');
-  
-            if (!confirm(
+        if(deleteButtons) {
+
+          deleteButtons.forEach(deleteButton => {
+            
+            deleteButton.addEventListener('click', function () {
+            // console.log('bottone cliccato');
+    
+              if (!confirm(
 `The delete action is not reversible.
 Are you sure that you want to remove this comic from the list?`
               )) {
-                  event.preventDefault();
+                event.preventDefault();
               } 
+            });
+
           });
 
         };
