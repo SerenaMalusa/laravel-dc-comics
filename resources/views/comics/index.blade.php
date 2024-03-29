@@ -36,7 +36,15 @@
                             <i class="fa-solid fa-circle-info"></i>
                         </a>
                         <a href="{{ route('comics.edit', $comic)}}">
-                          <i class="fa-solid fa-file-pen"></i></a>
+                          <i class="fa-solid fa-file-pen"></i>
+                        </a>
+                        <form class="d-inline-block" action="{{ route('comics.destroy', $comic) }}" method="POST">
+                          @csrf
+                          @method('DELETE')
+                          <button class="btn border border-0" type="submit" id='delete-btn'>
+                            <i class="fa-solid fa-trash-can text-danger"></i>
+                          </button>
+                        </form>
                     </td>
                 </tr>
             @endforeach
@@ -51,4 +59,24 @@
 
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+      #delete-btn {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        align-items: flex-start;
+      }
+    </style>
+@endsection
+
+@section('js')
+    <script>
+        const deleteBtn = document.querySelector('#delete-btn');
+        deleteBtn.addEventListener('click', function () {
+            confirm(
+`The delete action is not reversible.
+Are you sure that you want to remove this comic from the list?`
+            );
+        });
+    </script>
 @endsection
